@@ -209,12 +209,12 @@ $Route->add('/banco/admin/profile', function () {
 	$Banco->SetUserInfo($accid, "aml_transfer_error", $Data->aml_transfer_error);
 	$Banco->SetUserInfo($accid, "aml_error_code", $Data->aml_error_code);
 
-	$uvl_transfer_error = 0;
-	if (isset($Data->uvl_transfer_error)) {
-		$uvl_transfer_error = 1;
+	$uvc_transfer_error = 0;
+	if (isset($Data->uvc_transfer_error)) {
+		$uvc_transfer_error = 1;
 	}
-	$Banco->SetUserInfo($accid, "uvl_transfer_error", $Data->uvl_transfer_error);
-	$Banco->SetUserInfo($accid, "uvl_error_code", $Data->uvl_error_code);
+	$Banco->SetUserInfo($accid, "uvc_transfer_error", $Data->uvc_transfer_error);
+	$Banco->SetUserInfo($accid, "uvc_error_code", $Data->uvc_error_code);
 
 	if ($_FILES["avatar"]['size'] > 0) {
 		$handle = new \Verot\Upload\Upload($_FILES["avatar"]);
