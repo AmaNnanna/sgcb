@@ -796,8 +796,6 @@ $Route->add('/admin/accounts/create', function () {
 
 	$newaccid = $Banco->CreateAccount($Post->currency, $Post->account_type, $Post->email, $Post->mobile, $Temp_Password, $Post->firstname, $Post->lastname, $Post->address, $Post->address2, $Post->zipcode, $Post->city, $Post->state, $Post->country);
 
-	$Template->debug($newaccid);
-
 	$fullname = "$Post->firstname} {$Post->lastname}";
 
 	//SMS HERE//

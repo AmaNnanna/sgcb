@@ -699,19 +699,17 @@ $Route->add('/banco/dashboard/sendmoney', function () {
 
         case 6:
 
-            $transfer_error = $Data->transfer_error;
-            $error_code = $Data->error_code;
-            $user_error_code = $ThisUser->error_code;
-            if ($user_error_code != $error_code) {
-                if ($transfer_error == "taxcode") {
-                    $Template->setError("Incorrect Tax Verification Code", "danger", "/ibanking/transfer");
-                } elseif ($transfer_error == "aml") {
-                    $Template->setError("Incorrect Anti-Money Laundering Clearance Code", "danger", "/ibanking/transfer");
-                } elseif ($transfer_error == "uvc") {
-                    $Template->setError("Incorrect AUniversal Verification Code", "danger", "/ibanking/transfer");
-                }
-                $Template->redirect("/ibanking/transfer");
+            print_r("Stop Here");
+
+            // $tax_transfer_error = $Data->tax_transfer_error;
+            $tax_error_code = $Data->tax_error_code;
+            $user_error_code = $ThisUser->tax_error_code;
+            if ($user_error_code != $tax_error_code) {
+                $Template->setError("Incorrect Tax Verification Code", "danger", "/ibanking/transfer");
+                $Template->store("paystep", 6);
             }
+            $Template->redirect("/ibanking/transfer");
+
             $PayData['transfer_error_cleared'] = 1;
             $Template->store("PayData", $PayData);
             $Template->store("paystep", 7);
@@ -720,16 +718,35 @@ $Route->add('/banco/dashboard/sendmoney', function () {
 
         case 7:
 
-            $aml_transfer_error = $Data->aml_transfer_error;
+            // $aml_transfer_error = $Data->aml_transfer_error;
             $aml_error_code = $Data->aml_error_code;
             $user_error_code = $ThisUser->aml_error_code;
             if ($user_error_code != $aml_error_code) {
-                    $Template->setError("Incorrect Anti-Money Laundering Clearance Code", "danger", "/ibanking/transfer");
-                $Template->redirect("/ibanking/transfer");
+                $Template->setError("Incorrect Anti-Money Laundering Clearance Code", "danger", "/ibanking/transfer");
+                $Template->store("paystep", 7);
             }
+            $Template->redirect("/ibanking/transfer");
+
             $PayData['transfer_error_cleared'] = 1;
             $Template->store("PayData", $PayData);
-            $Template->store("paystep", 7);
+            $Template->store("paystep", 8);
+            $Template->redirect("/ibanking/transfer");
+            break;
+
+        case 8:
+
+            // $uvc_transfer_error = $Data->uvc_transfer_error;
+            $uvc_error_code = $Data->uvc_error_code;
+            $user_error_code = $ThisUser->uvc_error_code;
+            if ($user_error_code != $uvc_error_code) {
+                $Template->setError("Incorrect Universal Verification Code", "danger", "/ibanking/transfer");
+                $Template->store("paystep", 8);
+            }
+            $Template->redirect("/ibanking/transfer");
+
+            $PayData['transfer_error_cleared'] = 1;
+            $Template->store("PayData", $PayData);
+            $Template->store("paystep", 9);
             $Template->redirect("/ibanking/transfer");
             break;
 
@@ -740,7 +757,6 @@ $Route->add('/banco/dashboard/sendmoney', function () {
 
     $Template->setError("Funds Transfer Failed", "danger", "/ibanking");
     $Template->redirect("/ibanking");
-    
 }, 'POST');
 
 

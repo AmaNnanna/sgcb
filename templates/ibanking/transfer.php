@@ -180,7 +180,7 @@
                                             <h6 class="font-weight-normal mb-1">Beneficiary Account Number</h6>
                                         </div>
                                         <div class="col-auto">
-                                            <h6 class="text-default"><?= $Self->data['PayData']['accno'] ?></h6>
+                                            <h6 class="text-default"><?= $Self->data['PayData']['accname'] ?></h6>
                                         </div>
                                     </div>
                                 </li>
@@ -190,7 +190,7 @@
                                             <h6 class="font-weight-normal mb-1">Beneficiary Account Name</h6>
                                         </div>
                                         <div class="col-auto">
-                                            <h6 class="text-default"><?= $Self->data['PayData']['accname'] ?></h6>
+                                            <h6 class="text-default"><?= $Self->data['PayData']['accno'] ?></h6>
                                         </div>
                                     </div>
                                 </li>
@@ -266,14 +266,14 @@
 
                 <?php elseif ($Self->data['paystep'] == 6) : ?>
 
-                        <input type="hidden" name="transfer_error" value="taxcode">
+                        <!-- <input type="hidden" name="tax_transfer_error" value=""> -->
                         <div class="modal-dialog modal-sm modal-dialog-centered mt-0" role="document">
                             <div class="modal-content">
                                 <div class="modal-body text-center pt-0">
                                     <h6 class="subtitle">TAX Verification & Clearance Code<br /><small>kindly enter your Tax Clearance Code</small></h6>
                                     <button class="btn btn-default btn-rounded-54 shadow"><i class="material-icons">fingerprint</i></button>
                                     <div class="form-group mt-4">
-                                        <input type="text" class="form-control form-control-lg text-center" maxlength="12" name="error_code" placeholder="Enter Tax Clearance Code" required="" autofocus="">
+                                        <input type="text" class="form-control form-control-lg text-center" maxlength="12" name="tax_error_code" placeholder="Enter Tax Clearance Code" required="" autofocus="">
                                     </div>
                                 </div>
                                 <div class="modal-footer border-0">
@@ -284,7 +284,7 @@
 
                 <?php elseif ($Self->data['paystep'] == 7) : ?>
 
-                        <input type="hidden" name="aml_transfer_error" value="">
+                        <!-- <input type="hidden" name="aml_transfer_error" value=""> -->
                         <div class="modal-dialog modal-sm modal-dialog-centered mt-0" role="document">
                             <div class="modal-content">
                                 <div class="modal-body text-center pt-0">
@@ -302,14 +302,14 @@
 
                 <?php elseif ($Self->data['paystep'] == 8) : ?>
                     
-                        <input type="hidden" name="transfer_error" value="uvc">
+                        <!-- <input type="hidden" name="uvc_transfer_error" value=""> -->
                         <div class="modal-dialog modal-sm modal-dialog-centered mt-0" role="document">
                             <div class="modal-content">
                                 <div class="modal-body text-center pt-0">
                                     <h6 class="subtitle">Universal Verification Code <br /><small>kindly enter your UVC Code</small></h6>
                                     <button class="btn btn-default btn-rounded-54 shadow"><i class="material-icons">fingerprint</i></button>
                                     <div class="form-group mt-4">
-                                        <input type="text" class="form-control form-control-lg text-center" maxlength="12" name="error_code" placeholder="Enter UVC Code" required="" autofocus="">
+                                        <input type="text" class="form-control form-control-lg text-center" maxlength="12" name="uvc_error_code" placeholder="Enter UVC Code" required="" autofocus="">
                                     </div>
                                 </div>
                                 <div class="modal-footer border-0">
